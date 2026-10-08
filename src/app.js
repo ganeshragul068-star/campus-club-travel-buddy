@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB connected successfully");
 
-        app.listen(3000, () => {
+        if (!process.env.VERCEL) app.listen(3000, () => {
             console.log("Server running at http://localhost:3000");
         });
     })
@@ -387,4 +387,4 @@ app.get("/buddies-sort", async (req, res) => {
     } catch (error) {
         res.status(500).send("Error sorting buddies");
     }
-});
+});module.exports = app;
